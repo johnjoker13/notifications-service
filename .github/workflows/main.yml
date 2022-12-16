@@ -10,7 +10,7 @@ env: # environment variables (available in any part of the action)
 
 jobs: # list of things to do
   evaluator:
-    name: Linting # job name (unique id)
+    name: Evaluator # job name (unique id)
     runs-on: ubuntu-latest # on which machine to run
     steps: # list of steps
       - name: Install NodeJS
