@@ -15,8 +15,11 @@ export class Notification {
   private _id: string;
   private _props: NotificationProps;
 
-  constructor(props: Replace<NotificationProps, { createdAt?: Date }>) {
-    this._id = randomUUID();
+  constructor(
+    props: Replace<NotificationProps, { createdAt?: Date }>,
+    id?: string,
+  ) {
+    this._id = id ?? randomUUID();
     this._props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
@@ -51,8 +54,12 @@ export class Notification {
     return this._props.category;
   }
 
-  public set readAt(readAt: Date | null | undefined) {
-    this._props.readtAt = readAt;
+  public read() {
+    this._props.readtAt = new Date();
+  }
+
+  public unread() {
+    this._props.readtAt = null;
   }
 
   public get readAt(): Date | null | undefined {
